@@ -22,21 +22,17 @@ export default function LoginScreen() {
 
     return (
 
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.container}> 
             <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                style={styles.container}
-            >
-
+                style={styles.container}>
                 <ScrollView contentContainerStyle={styles.content}>
-
                     <View style={styles.header}>
                         <Text style={styles.title}>
                             Controle <Text style={styles.titleHighlight}>Frequência</Text>
                         </Text>
                         <Text style={styles.subtitle}>Entrar</Text>
                     </View>
-
 
                     <View style={styles.form}>
 
@@ -52,8 +48,6 @@ export default function LoginScreen() {
                                 autoCapitalize="none"
                             />
                         </View>
-
-
                         <View style={styles.inputGroup}>
                             <Text style={styles.label}>Senha</Text>
                             <View style={styles.passwordContainer}>
@@ -77,8 +71,6 @@ export default function LoginScreen() {
                                 </TouchableOpacity>
                             </View>
                         </View>
-
-
                         <View style={styles.inputGroup}>
                             <Text style={styles.label}>Entrar como</Text>
                             <View style={styles.pickerContainer}>
@@ -86,27 +78,19 @@ export default function LoginScreen() {
                                     selectedValue={role}
                                     onValueChange={(itemValue: any) => setRole(itemValue)}
                                     style={styles.picker}
-                                    dropdownIconColor="#6b7280"
-                                >
-
+                                    dropdownIconColor="#6b7280">
                                     <Picker.Item label="Selecione" value="" enabled={false} style={styles.pickerItemPlaceholder} />
-
                                     <Picker.Item label="Aluno" value="aluno" style={styles.pickerItem} />
                                     <Picker.Item label="Professor" value="professor" style={styles.pickerItem} />
-
                                 </Picker>
                             </View>
                         </View>
-
-
                         <View style={styles.forgotPasswordContainer}>
                             <TouchableOpacity>
                                 <Text style={styles.forgotPasswordText}>Esqueceu a senha?</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
-
-
                     <TouchableOpacity style={styles.button} onPress={handleSubmit}>
                         <Text style={styles.buttonText}>Confirmar</Text>
                     </TouchableOpacity>
@@ -115,7 +99,6 @@ export default function LoginScreen() {
         </SafeAreaView>
     );
 }
-
 
 const styles = StyleSheet.create({
     container: {
