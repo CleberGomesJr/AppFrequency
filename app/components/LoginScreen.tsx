@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, Alert, Platform, KeyboardAvoidingView, ScrollView, } from 'react-native';
 import { Eye, EyeOff } from 'lucide-react-native';
 import { Picker } from '@react-native-picker/picker';
+import {  useRouter } from 'expo-router';
 
 
 export default function LoginScreen() {
+    const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('');
@@ -22,7 +24,7 @@ export default function LoginScreen() {
 
     return (
 
-        <SafeAreaView style={styles.container}> 
+        <SafeAreaView style={styles.container}>
             <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 style={styles.container}>
@@ -86,7 +88,8 @@ export default function LoginScreen() {
                             </View>
                         </View>
                         <View style={styles.forgotPasswordContainer}>
-                            <TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => router.push('/components/changePasswordScreen')}>
                                 <Text style={styles.forgotPasswordText}>Esqueceu a senha?</Text>
                             </TouchableOpacity>
                         </View>

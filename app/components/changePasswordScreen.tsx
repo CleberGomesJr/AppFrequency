@@ -1,72 +1,17 @@
 import { useState } from 'react';
-import {
-    SafeAreaView,
-    View,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    StyleSheet,
-    StatusBar,
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    Dimensions,
-} from 'react-native';
+import {SafeAreaView, View, Text, TextInput, TouchableOpacity, StyleSheet, StatusBar, KeyboardAvoidingView, Platform, ScrollView, Dimensions} from 'react-native';
+import { useRouter } from 'expo-router';
+import {  LockIcon, CheckIcon } from './Icons';
+import Header from './Header';
 
-import { Svg, Path, Rect } from 'react-native-svg';
 
 const { width } = Dimensions.get('window');
 
 
-const BackArrowIcon = () => (
-    <Svg
-        width={24}
-        height={24}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="#6A5AED"
-        strokeWidth={2.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-    >
-        <Path d="M15 18l-6-6 6-6" />
-    </Svg>
-);
-
-const LockIcon = () => (
-    <Svg
-        width={32}
-        height={32}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="#6A5AED"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-    >
-        <Rect x={3} y={11} width={18} height={11} rx={2} ry={2} />
-        <Path d="M7 11V7a5 5 0 0 1 10 0v4" />
-    </Svg>
-);
-
-
-const CheckIcon = () => (
-    <Svg
-        width={20}
-        height={20}
-        viewBox="0 0 24 24"
-        fill="#6A5AED"
-    >
-        <Path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-    </Svg>
-);
-
-
-
-const changePasswordScreen = () => {
+const ChangePasswordScreen = () => {
+    const navigation = useRouter();
     const [newPassword, setnewPassword] = useState('');
     const [confirmPassword, setconfirmPassword] = useState('');
-
 
     const handleEnviar = () => {
         if (!newPassword || !confirmPassword) {
@@ -85,6 +30,7 @@ const changePasswordScreen = () => {
 
     return (
         <SafeAreaView style={styles.safeArea}>
+            <Header title ="Alterar Senha" />
             <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
 
             {/* Container para evitar que o teclado cubra os inputs */}
@@ -97,19 +43,10 @@ const changePasswordScreen = () => {
                     contentContainerStyle={styles.scrollContainer}
                     keyboardShouldPersistTaps="handled"
                 >
-                    {/* 1. Cabeçalho */}
-                    <View style={styles.header}>
-                        <TouchableOpacity style={styles.backButton}>
-                            <BackArrowIcon />
-                        </TouchableOpacity>
-                        <Text style={styles.headerTitle}>Alterar Senha</Text>
-                        {/* View fantasma para centralizar o título corretamente */}
-                        <View style={styles.headerSpacer} />
-                    </View>
-
+                    
                     {/* 2. Conteúdo Principal */}
                     <View style={styles.mainContent}>
-                        {/* Ícone de Cadeado */}
+
                         <View style={styles.iconContainer}>
                             <LockIcon />
                         </View>
@@ -175,8 +112,6 @@ const changePasswordScreen = () => {
     );
 };
 
-
-
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
@@ -188,14 +123,6 @@ const styles = StyleSheet.create({
     scrollContainer: {
         flexGrow: 1,
         padding: 24,
-    },
-    // Cabeçalho
-    header: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: 24,
-        width: '100%',
     },
     backButton: {
         padding: 4,
@@ -297,4 +224,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default changePasswordScreen;
+export default ChangePasswordScreen;
