@@ -48,3 +48,8 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+---------------------------------------------------------------------------------
+O Projeto foi dividido por enquanto entre o github e o expo snack.
+link expo com o resto do projeto:   https://snack.expo.dev/@brunogstavo/puc-presente---alunos // https://snack.expo.dev/@brunogstavo/puc-presente---professor
+
