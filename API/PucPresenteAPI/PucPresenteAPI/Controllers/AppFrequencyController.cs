@@ -42,4 +42,23 @@ public class AppController : ControllerBase
             };
         }
     }
+
+    [HttpPost("start/{classId}")]
+    [Authorize(Roles = "Professor")]
+    public async Task<IActionResult> StartAttendance(int classId)
+    {
+        if(!int.TryParse(User.FindFirst("id")?.Value, out int teacherId))
+            return Unauthorized(new {message = "ID do professor inválido no token."});
+
+        try
+        {
+            var response = await _appServices.StartAttendanceAsync(classId, teacherId);
+
+            return StatusCode(201, response);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new {message = "Erro interno ao iniciar a chamada." });
+        }
+    }
 }
