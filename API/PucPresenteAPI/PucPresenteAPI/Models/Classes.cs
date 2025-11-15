@@ -6,4 +6,5 @@ public class Classes
     public string Name { get; set; }
     //Quantidade de aulas por semestre pra fazer o cálculo de porcentagem para os alunos, etc.
     public int ClassNumber { get; set; }
+    public int? ProfessorId { get; set; }
 }
